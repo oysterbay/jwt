@@ -2,7 +2,9 @@ package xyz.vndy.jwt.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.vndy.jwt.model.Movie;
 import xyz.vndy.jwt.service.MovieService;
@@ -13,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
 public class HomeController {
 
     @Autowired

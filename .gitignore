@@ -33,3 +33,5 @@ build/
 .vscode/
 .DS_Store
 **/static/
+src/main/webapp/node/**
+src/main/frontend/node/**
