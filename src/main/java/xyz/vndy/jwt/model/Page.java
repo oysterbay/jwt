@@ -1,2 +1,4 @@
-package xyz.vndy.jwt.model;public class Page {
+package xyz.vndy.jwt.model;
+
+public class Page {
 }

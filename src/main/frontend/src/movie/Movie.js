@@ -1,33 +1,42 @@
 import React, {useEffect, useState} from 'react';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination } from "@mui/material";
+import { Pagination } from "@mui/lab";
 import axios from 'axios';
 import Card from './Card';
 import { MOVIES_ENDPOINT } from '../apiEndpoints';
+import { MOVIES_PAGINATION_ENDPOINT } from '../apiEndpoints';
 
 const Movie = () => {
-  const [data, setData] = useState([]);
-  
+  const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const [totalPages, setTotalPages] = useState(0);
+
   useEffect(() => {
-    axios.get(MOVIES_ENDPOINT)
-    // axios.get('http://springboot-env.eba-uprqgxvp.us-east-1.elasticbeanstalk.com/api/movies')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
+    fetchMovies();
+  }, [page, pageSize]);
+
+  const fetchMovies = async () => {
+    const response = await axios.get(MOVIES_PAGINATION_ENDPOINT(page-1, pageSize))
+    // const response = await axios.get(`http://localhost:5000/api/items?pageNumber=${page - 1}&pageSize=${pageSize}`);
+    // const response = await axios.get(`http://springboot-env.eba-uprqgxvp.us-east-1.elasticbeanstalk.com/api/items?pageNumber=${page - 1}&pageSize=${pageSize}`);
+    setMovies(response.data.content);
+    setTotalPages(response.data.totalPages);
+  };
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangePageSize = (event) => {
+    setPageSize(parseInt(event.target.value));
+    setPage(1);
+  };
 
   return (
     <div>
-      {/* {data.map(item => (
-        <div key={item.id}>
-          <h2>{item.title}</h2>
-          <p>{item.year}</p>
-          <p>{item.director}</p>
-        </div>
-      ))} */}
-        <h1>Movie List</h1>
-      {data.map(item => (
+      <h1>Movie List</h1>
+      {movies.map(item => (
         <div>
           <Card 
             title={item.title} 
@@ -36,6 +45,16 @@ const Movie = () => {
           />
         </div>
       ))}
+      <TablePagination
+        component="div"
+        count={totalPages * pageSize}
+        page={page - 1}
+        onPageChange={handleChangePage}
+        rowsPerPage={pageSize}
+        onRowsPerPageChange={handleChangePageSize}
+        rowsPerPageOptions={[5, 10, 20]}
+      />
+      <Pagination count={totalPages} page={page} onChange={handleChangePage} sx={{ marginTop: 2 }} />
     </div>
   );
 }
