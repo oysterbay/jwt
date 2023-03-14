@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Card from './Card';
+import { MOVIES_ENDPOINT } from '../apiEndpoints';
 
 const Movie = () => {
   const [data, setData] = useState([]);
-
+  
   useEffect(() => {
-    axios.get('http://localhost:5000/api/movies')
+    axios.get(MOVIES_ENDPOINT)
     // axios.get('http://springboot-env.eba-uprqgxvp.us-east-1.elasticbeanstalk.com/api/movies')
       .then(response => {
         setData(response.data);

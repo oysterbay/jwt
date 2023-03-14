@@ -3,6 +3,7 @@ import axios from "axios";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Pagination } from "@mui/lab";
+import { MOVIES_PAGINATION_ENDPOINT } from "../apiEndpoints";
 
 const StyledTableContainer = styled(TableContainer)({
   marginTop: 16,
@@ -19,8 +20,8 @@ function MovieList() {
   }, [page, pageSize]);
 
   const fetchMovies = async () => {
-    
-    const response = await axios.get(`http://localhost:5000/api/items?pageNumber=${page - 1}&pageSize=${pageSize}`);
+    const response = await axios.get(MOVIES_PAGINATION_ENDPOINT(page-1, pageSize))
+    // const response = await axios.get(`http://localhost:5000/api/items?pageNumber=${page - 1}&pageSize=${pageSize}`);
     // const response = await axios.get(`http://springboot-env.eba-uprqgxvp.us-east-1.elasticbeanstalk.com/api/items?pageNumber=${page - 1}&pageSize=${pageSize}`);
     setMovies(response.data.content);
     setTotalPages(response.data.totalPages);
