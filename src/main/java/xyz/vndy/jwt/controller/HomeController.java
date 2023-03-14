@@ -60,5 +60,9 @@ public class HomeController {
         return ResponseEntity.ok(movies);
     }
 
+    @GetMapping("/search")
+    public List<Movie> search(@RequestParam("q") String query) {
+        return movieRepository.findByTitleContainingIgnoreCaseOrDirectorContainingIgnoreCase(query, query);
+    }
 
 }
