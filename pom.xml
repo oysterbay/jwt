@@ -84,7 +84,7 @@
 						</goals>
 						<phase>generate-resources</phase>
 						<configuration>
-							<arguments>install</arguments>
+							<arguments>install -f</arguments>
 						</configuration>
 					</execution>
 					<!-- building production version -->

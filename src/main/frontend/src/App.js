@@ -1,10 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
-import Movie from './movie/Movie';
+import MenuBar from './MenuBar';
+import MovieList from './movie/MovieList';
 
 function App() {
   return (
-    <Movie/>
+    <div>
+      <MenuBar />
+      <MovieList />
+    </div>
+      
   );
 }
 

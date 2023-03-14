@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Card from './Card';
 
@@ -7,6 +7,7 @@ const Movie = () => {
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/movies')
+    // axios.get('http://springboot-env.eba-uprqgxvp.us-east-1.elasticbeanstalk.com/api/movies')
       .then(response => {
         setData(response.data);
       })
@@ -24,7 +25,7 @@ const Movie = () => {
           <p>{item.director}</p>
         </div>
       ))} */}
-      
+        <h1>Movie List</h1>
       {data.map(item => (
         <div>
           <Card 
