@@ -4,10 +4,10 @@ let BASE_URL = '';
 
 if (process.env.NODE_ENV === 'development') {
   environment = 'development';
-  BASE_URL = 'http://localhost:5000/api'
+  BASE_URL = 'http://localhost:8080/api'
 } else {
   environment = 'production';
-  BASE_URL = 'http://springboot-env.eba-uprqgxvp.us-east-1.elasticbeanstalk.com/api'
+  BASE_URL = 'http://129.146.85.90:8080/api'
 }
 
 console.log("env: " + environment)
