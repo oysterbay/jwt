@@ -1,4 +1,4 @@
-package xyz.vndy.jwt.controller;
+package xyz.vndy.fabflix.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

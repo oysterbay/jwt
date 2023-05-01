@@ -1,12 +1,14 @@
-package xyz.vndy.jwt.service;
+package xyz.vndy.fabflix.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import xyz.vndy.jwt.model.Movie;
-import xyz.vndy.jwt.repository.MovieRepository;
+import xyz.vndy.fabflix.dto.Top20RatedMovieDTO;
+import xyz.vndy.fabflix.model.Movie;
+import xyz.vndy.fabflix.repository.MovieRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -44,7 +46,25 @@ public class MovieService {
         return movieRepository.findByTitleContainingIgnoreCaseOrDirectorContainingIgnoreCase(query, query1);
     }
 
-    public List<Object[]> getTop20Movies() {
-        return movieRepository.getTop20Movies();
+    public List<Top20RatedMovieDTO> getTopRatedMovies() {
+        List<Object[]> results = movieRepository.findTop20RatedMovies();
+
+        List<Top20RatedMovieDTO> topRatedMovies = new ArrayList<>();
+
+        for (Object[] result : results) {
+            Top20RatedMovieDTO movieDTO = new Top20RatedMovieDTO();
+            movieDTO.setId((String) result[0]);
+            movieDTO.setTitle((String) result[1]);
+            movieDTO.setYear((Integer) result[2]);
+            movieDTO.setDirector((String) result[3]);
+            movieDTO.setGenre((String) result[4]);
+            movieDTO.setStar_name((String) result[5]);
+            movieDTO.setRating((Float) result[6]);
+
+            topRatedMovies.add(movieDTO);
+        }
+
+        return topRatedMovies;
     }
+
 }

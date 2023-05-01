@@ -1,12 +1,13 @@
-package xyz.vndy.jwt.controller;
+package xyz.vndy.fabflix.controller;
 
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import xyz.vndy.jwt.model.Movie;
-import xyz.vndy.jwt.service.MovieService;
+import xyz.vndy.fabflix.dto.Top20RatedMovieDTO;
+import xyz.vndy.fabflix.model.Movie;
+import xyz.vndy.fabflix.service.MovieService;
 
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class MovieController {
     }
 
     @GetMapping("/top20")
-    public List<Object[]> top20() {
-        return movieService.getTop20Movies();
+    public List<Top20RatedMovieDTO> top20() {
+        return movieService.getTopRatedMovies();
     }
 }

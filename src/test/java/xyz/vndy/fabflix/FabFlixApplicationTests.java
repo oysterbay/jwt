@@ -1,10 +1,10 @@
-package xyz.vndy.jwt;
+package xyz.vndy.fabflix;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JwtApplicationTests {
+class FabFlixApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,14 +1,13 @@
-package xyz.vndy.jwt;
+package xyz.vndy.fabflix;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
-public class JwtApplication {
+public class FabFlixApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JwtApplication.class, args);
+		SpringApplication.run(FabFlixApplication.class, args);
 	}
 
 }

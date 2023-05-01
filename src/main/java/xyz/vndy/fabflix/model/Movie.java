@@ -1,4 +1,4 @@
-package xyz.vndy.jwt.model;
+package xyz.vndy.fabflix.model;
 
 import lombok.Getter;
 import lombok.Setter;
