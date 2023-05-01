@@ -1,11 +1,10 @@
 package xyz.vndy.jwt.model;
 
-import com.sun.istack.NotNull;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -16,17 +15,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "movies")
 public class Movie {
-
     @Id
-    @NotNull
+    @Column(name = "id", length = 10)
     private String id;
 
-    @NotNull
+    @Column(name = "title", length = 100, nullable = false)
     private String title;
 
-    @NotNull
+    @Column(name = "year", nullable = false)
     private int year;
 
-    @NotNull
+    @Column(name = "director", length = 100, nullable = false)
     private String director;
 }
+

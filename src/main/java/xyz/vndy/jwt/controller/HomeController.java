@@ -1,16 +1,13 @@
 package xyz.vndy.jwt.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import xyz.vndy.jwt.model.Movie;
-import xyz.vndy.jwt.repository.MovieRepository;
-import xyz.vndy.jwt.service.MovieService;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -20,11 +17,6 @@ public class HomeController {
 
     @Autowired
     private HttpServletRequest request;
-
-    @Autowired
-    private MovieService movieService;
-    @Autowired
-    private MovieRepository movieRepository;
 
     @GetMapping("/index")
     public String home() {
@@ -44,25 +36,6 @@ public class HomeController {
         map.put("mac", "2");
         map.put("manu", "3");
         return map;
-    }
-
-    @GetMapping("/movies")
-    public List<Movie> movieList() {
-        return movieService.getAllMovies();
-    }
-
-
-    @GetMapping("/items")
-    public ResponseEntity<Page<Movie>> getMovies(
-            @RequestParam(defaultValue = "0") int pageNumber,
-            @RequestParam(defaultValue = "10") int pageSize) {
-        Page<Movie> movies = movieService.getMovies(pageNumber, pageSize);
-        return ResponseEntity.ok(movies);
-    }
-
-    @GetMapping("/search")
-    public List<Movie> search(@RequestParam("q") String query) {
-        return movieRepository.findByTitleContainingIgnoreCaseOrDirectorContainingIgnoreCase(query, query);
     }
 
 }

@@ -1,6 +1,5 @@
 package xyz.vndy.jwt.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -13,10 +12,12 @@ import java.util.List;
 @Service
 public class MovieService {
 
-    @Autowired
-    MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
 
-    //    @Transactional
+    public MovieService(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
+    }
+
     public List<Movie> getAllMovies() {
         return movieRepository.findAll();
     }
@@ -24,5 +25,22 @@ public class MovieService {
     public Page<Movie> getMovies(int pageNumber, int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         return movieRepository.findAll(pageable);
+    }
+
+
+    public Movie getMovieById(String id) {
+        return movieRepository.findById(id).orElse(null);
+    }
+
+    public Movie saveMovie(Movie movie) {
+        return movieRepository.save(movie);
+    }
+
+    public void deleteMovieById(String id) {
+        movieRepository.deleteById(id);
+    }
+
+    public List<Movie> findMoviesByTitleOrDirectorContaining(String query, String query1) {
+        return movieRepository.findByTitleContainingIgnoreCaseOrDirectorContainingIgnoreCase(query, query1);
     }
 }
