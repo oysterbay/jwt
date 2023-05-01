@@ -4,15 +4,17 @@ import MovieCard from './movie/MovieCard';
 // import MovieList from './movie/MovieList';
 import MovieSearch from './movie/MovieSearch';
 import Movie from './movie/Movie';
+import TopRatedMoviePage from './movie/TopRatedMoviePage';
 
 function App() {
   return (
     <div>
       <MenuBar />
-      <Movie />
+      <TopRatedMoviePage />
+      {/* <Movie /> */}
       {/* <MovieList /> */}
       {/* <MovieCard /> */}
-      <MovieSearch />
+      {/* <MovieSearch /> */}
     </div>
       
   );
