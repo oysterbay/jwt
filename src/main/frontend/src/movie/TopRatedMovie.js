@@ -16,11 +16,20 @@ const TopRatedMovie = ({ movies }) => {
       <tbody>
         {movies.map((movie) => (
           <tr key={movie.id}>
-            <td>{movie.title}</td>
+            <td>
+              <a href={`https://example.com/movies/${movie.id}`} style={{ textDecoration: 'none' }}>{movie.title}</a>
+            </td>
             <td>{movie.year}</td>
             <td>{movie.director}</td>
             <td>{movie.genre}</td>
-            <td>{movie.star_name}</td>
+            <td>
+              {movie.star_name.split(',').map((star, index) => (
+                <React.Fragment key={index}>
+                  {index > 0 && ', '}
+                  <a href={`https://example.com/stars/${star}`} style={{ textDecoration: 'none' }}>{star}</a>
+                </React.Fragment>
+              ))}
+            </td>
             <td>{movie.rating}</td>
           </tr>
         ))}
