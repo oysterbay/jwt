@@ -25,4 +25,19 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
             "LIMIT 20;",
             nativeQuery = true)
     List<Object[]> findTop20RatedMovies();
+
+
+    @Query(value = "SELECT\n" +
+            "  m.*,\n" +
+            "  (SELECT GROUP_CONCAT(s.name) FROM stars_in_movies sm INNER JOIN stars s ON s.id = sm.starId WHERE sm.movieId = m.id) AS star_names,\n" +
+            "  g.name AS genre,\n" +
+            "  r.rating\n" +
+            "FROM\n" +
+            "  movies m\n" +
+            "  INNER JOIN genres_in_movies gm ON gm.movieId = m.id\n" +
+            "  INNER JOIN genres g ON g.id = gm.genreId\n" +
+            "  INNER JOIN ratings r ON r.movieId = m.id\n" +
+            "WHERE\n" +
+            "  m.id = ?1", nativeQuery = true)
+    Object findSingleMovieDetailsById(String movieId);
 }

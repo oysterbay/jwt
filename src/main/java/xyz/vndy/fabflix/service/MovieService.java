@@ -67,4 +67,22 @@ public class MovieService {
         return topRatedMovies;
     }
 
+    public Top20RatedMovieDTO getSingleMovieDetails(String movieId) {
+        Object results = movieRepository.findSingleMovieDetailsById(movieId);
+
+        Top20RatedMovieDTO movieDetails = new Top20RatedMovieDTO();
+
+        Object[] row = (Object[]) results;
+        movieDetails.setId((String) row[0]);
+        movieDetails.setTitle((String) row[1]);
+        movieDetails.setYear((Integer) row[2]);
+        movieDetails.setDirector((String) row[3]);
+        movieDetails.setStar_name((String) row[4]);
+        movieDetails.setGenre((String) row[5]);
+        movieDetails.setRating((Float) row[6]);
+
+        return movieDetails;
+
+    }
+
 }

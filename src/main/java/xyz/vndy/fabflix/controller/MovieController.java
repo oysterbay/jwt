@@ -58,4 +58,15 @@ public class MovieController {
     public List<Top20RatedMovieDTO> top20() {
         return movieService.getTopRatedMovies();
     }
+
+    @GetMapping("movie/{movieId}")
+    public ResponseEntity<Top20RatedMovieDTO> getSingleMovieDetails(@PathVariable String movieId) {
+        log.info("hhasfashjdfjhkasjkhdfdjkhaskjhdfasdf");
+        Top20RatedMovieDTO movieDetails = movieService.getSingleMovieDetails(movieId);
+        if (movieDetails != null) {
+            return ResponseEntity.ok(movieDetails);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
