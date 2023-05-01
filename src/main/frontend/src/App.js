@@ -1,22 +1,18 @@
 import './App.css';
-import MenuBar from './MenuBar';
-import MovieCard from './movie/MovieCard';
-// import MovieList from './movie/MovieList';
-import MovieSearch from './movie/MovieSearch';
-import Movie from './movie/Movie';
 import TopRatedMoviePage from './movie/TopRatedMoviePage';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MovieDetailsPage from './movie/MovieDetailsPage';
+
 
 function App() {
+
   return (
-    <div>
-      <MenuBar />
-      <TopRatedMoviePage />
-      {/* <Movie /> */}
-      {/* <MovieList /> */}
-      {/* <MovieCard /> */}
-      {/* <MovieSearch /> */}
-    </div>
-      
+    <Router>
+      <Routes>
+        <Route path="/" element={<TopRatedMoviePage />} />
+        <Route path="/movie/:id" element={<MovieDetailsPage />} />
+      </Routes>
+    </Router>
   );
 }
 

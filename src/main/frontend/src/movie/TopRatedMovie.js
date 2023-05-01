@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TopRatedMovie = ({ movies }) => {
   return (
@@ -17,7 +18,9 @@ const TopRatedMovie = ({ movies }) => {
         {movies.map((movie) => (
           <tr key={movie.id}>
             <td>
-              <a href={`https://example.com/movies/${movie.id}`} style={{ textDecoration: 'none' }}>{movie.title}</a>
+              <Link to={`/movie/${movie.id}`} style={{ textDecoration: 'none' }}>
+                {movie.title}
+              </Link>
             </td>
             <td>{movie.year}</td>
             <td>{movie.director}</td>
