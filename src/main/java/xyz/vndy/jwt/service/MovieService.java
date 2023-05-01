@@ -43,4 +43,8 @@ public class MovieService {
     public List<Movie> findMoviesByTitleOrDirectorContaining(String query, String query1) {
         return movieRepository.findByTitleContainingIgnoreCaseOrDirectorContainingIgnoreCase(query, query1);
     }
+
+    public List<Object[]> getTop20Movies() {
+        return movieRepository.getTop20Movies();
+    }
 }

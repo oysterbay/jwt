@@ -52,4 +52,9 @@ public class MovieController {
     public List<Movie> findMoviesByTitleOrDirectorContaining(@RequestParam("q") String query) {
         return movieService.findMoviesByTitleOrDirectorContaining(query, query);
     }
+
+    @GetMapping("/top20")
+    public List<Object[]> top20() {
+        return movieService.getTop20Movies();
+    }
 }
