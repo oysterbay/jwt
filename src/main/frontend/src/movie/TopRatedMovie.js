@@ -35,7 +35,7 @@ const TopRatedMovie = ({ movies }) => {
                 <React.Fragment key={index}>
                   {index > 0 && ', '}
                   <Link
-                    to={`https://example.com/stars/${star.id}`}
+                    to={`/star/${star.id}`}
                     style={{
                       textDecoration: 'none',
                       color: 'blue'

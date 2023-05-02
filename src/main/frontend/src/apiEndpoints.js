@@ -20,6 +20,7 @@ export const MOVIES_PAGINATION_ENDPOINT = (pageNumber, pageSize) => `${BASE_URL}
 export const MOVIE_DETAILS_ENDPOINT = (movieId) => `/movies/${movieId}`;
 export const SINGLE_MOVIE_DETAILS_ENDPOINT = (movieId) => `${BASE_URL}/movie/${movieId}`;
 export const MOVIE_REVIEWS_ENDPOINT = (movieId) => `/movies/${movieId}/reviews`;
+export const STAR_DETAILS_ENDPOINT = (starId) => `${BASE_URL}/star/${starId}`;
 
 export const USERS_ENDPOINT = "/users";
 export const USER_DETAILS_ENDPOINT = (userId) => `/users/${userId}`;
