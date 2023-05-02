@@ -96,12 +96,18 @@ public class MovieService {
         movieDetails.setTitle((String) row[1]);
         movieDetails.setYear((Integer) row[2]);
         movieDetails.setDirector((String) row[3]);
-//        movieDetails.setStar_name((String) row[4]);
-        movieDetails.setGenre((String) row[5]);
-        movieDetails.setRating((Float) row[6]);
+
+        String starIds = (String) row[4];
+        System.out.println("Star Ids: " + starIds);
+        String starNames = (String) row[5];
+        System.out.println("Star Names: " + starNames);
+
+        List<Top20RatedMovieDTO.StarInfo> stars = createStarPairs(starIds, starNames);
+        movieDetails.setStars(stars);
+
+        movieDetails.setGenre((String) row[6]);
+        movieDetails.setRating((Float) row[7]);
 
         return movieDetails;
-
     }
-
 }

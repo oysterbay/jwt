@@ -30,6 +30,7 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
 
     @Query(value = "SELECT\n" +
             "  m.*,\n" +
+            "  (SELECT GROUP_CONCAT(sm.starId) FROM stars_in_movies sm WHERE sm.movieId = m.id) AS star_ids,\n" +
             "  (SELECT GROUP_CONCAT(s.name) FROM stars_in_movies sm INNER JOIN stars s ON s.id = sm.starId WHERE sm.movieId = m.id) AS star_names,\n" +
             "  g.name AS genre,\n" +
             "  r.rating\n" +
