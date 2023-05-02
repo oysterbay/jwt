@@ -31,16 +31,17 @@ const TopRatedMovie = ({ movies }) => {
             <td>{movie.director}</td>
             <td>{movie.genre}</td>
             <td>
-              {movie.star_name.split(',').map((star, index) => (
+              {movie.stars.map((star, index) => (
                 <React.Fragment key={index}>
                   {index > 0 && ', '}
-                  <Link 
-                    to={`https://example.com/stars/${star}`}
-                    style={{ 
+                  <Link
+                    to={`https://example.com/stars/${star.id}`}
+                    style={{
                       textDecoration: 'none',
                       color: 'blue'
-                      }}>
-                    {star}
+                    }}
+                  >
+                    {star.name}
                   </Link>
                 </React.Fragment>
               ))}
