@@ -19,7 +19,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import InputBase from "@mui/material/InputBase";
 import { useNavigate } from 'react-router-dom';
 
-
 const drawerWidth = 240;
 const navItems = ["Home", "Browse", "Movies"];
 
@@ -67,7 +66,7 @@ function DrawerAppBar(props) {
     return (
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <AppBar component="nav">
+        <AppBar component="nav" sx={{ backgroundColor: "#1f2222" }}>
           <Toolbar>
             <IconButton
               color="inherit"
@@ -78,6 +77,13 @@ function DrawerAppBar(props) {
             >
               <MenuIcon />
             </IconButton>
+
+            <img 
+              src={`${process.env.PUBLIC_URL}/logo-no-background.png`}
+              style={{ width: 'auto', height: '70px', maxHeight: '100%', marginRight: '30px' }}
+              alt="Logo" 
+            />
+
             <Typography
               variant="h6"
               component="div"
