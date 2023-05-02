@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import xyz.vndy.fabflix.dto.MovieStarDTO;
 import xyz.vndy.fabflix.dto.Top20RatedMovieDTO;
 import xyz.vndy.fabflix.model.Movie;
 import xyz.vndy.fabflix.repository.MovieRepository;
@@ -109,5 +110,20 @@ public class MovieService {
         movieDetails.setRating((Float) row[7]);
 
         return movieDetails;
+    }
+
+    public MovieStarDTO getMovieStarDetails(String id) {
+        Object results = movieRepository.findMovieStarDetailsById(id);
+
+        MovieStarDTO starDetails = new MovieStarDTO();
+
+        Object[] row = (Object[]) results;
+
+        starDetails.setName((String) row[0]);
+        starDetails.setDob((Integer) row[1]);
+        starDetails.setId((String) row[2]);
+        starDetails.setMovie_name((String) row[3]);
+
+        return starDetails;
     }
 }

@@ -5,6 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import xyz.vndy.fabflix.dto.MovieStarDTO;
 import xyz.vndy.fabflix.dto.Top20RatedMovieDTO;
 import xyz.vndy.fabflix.model.Movie;
 import xyz.vndy.fabflix.service.MovieService;
@@ -61,10 +62,22 @@ public class MovieController {
 
     @GetMapping("movie/{movieId}")
     public ResponseEntity<Top20RatedMovieDTO> getSingleMovieDetails(@PathVariable String movieId) {
-        log.info("hhasfashjdfjhkasjkhdfdjkhaskjhdfasdf");
+        log.info("get movie details with id: " + movieId);
         Top20RatedMovieDTO movieDetails = movieService.getSingleMovieDetails(movieId);
         if (movieDetails != null) {
             return ResponseEntity.ok(movieDetails);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/star/{starId}")
+    public ResponseEntity<MovieStarDTO> getMovieStarDetails(@PathVariable String starId) {
+        log.info("get star details with id: " + starId);
+        MovieStarDTO starDetails = movieService.getMovieStarDetails(starId);
+
+        if (starDetails != null) {
+            return ResponseEntity.ok(starDetails);
         } else {
             return ResponseEntity.notFound().build();
         }

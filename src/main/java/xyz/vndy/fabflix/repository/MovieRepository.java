@@ -42,4 +42,14 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
             "WHERE\n" +
             "  m.id = ?1", nativeQuery = true)
     Object findSingleMovieDetailsById(String movieId);
+
+    @Query(value = "SELECT s.name AS star,\n" +
+            "       s.birthyear AS birthyear,\n" +
+            "       m.id AS movieid,\n" +
+            "       m.title AS moviename\n" +
+            "FROM stars s\n" +
+            "INNER JOIN stars_in_movies sm ON sm.starid = s.id\n" +
+            "INNER JOIN movies m ON m.id = sm.movieid\n" +
+            "WHERE s.id = ?1", nativeQuery = true)
+    Object findMovieStarDetailsById(String movieId);
 }
