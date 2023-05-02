@@ -114,17 +114,35 @@ public class MovieService {
     }
 
     public MovieStarDTO getMovieStarDetails(String id) {
-        Object results = movieRepository.findMovieStarDetailsById(id);
 
+        List<Object[]> results = movieRepository.findMovieStarDetailsById(id);
+
+        if (results.isEmpty()) {
+            return null;
+        }
         MovieStarDTO starDetails = new MovieStarDTO();
+        starDetails.setName((String) results.get(0)[0]);
+        starDetails.setDob((Integer) results.get(0)[1]);
 
-        Object[] row = (Object[]) results;
-
-        starDetails.setName((String) row[0]);
-        starDetails.setDob((Integer) row[1]);
-        starDetails.setId((String) row[2]);
-        starDetails.setMovie_name((String) row[3]);
+        List<MovieStarDTO.MovieInfo> movies = new ArrayList<>();
+        for (Object[] row : results) {
+            String movieId = (String) row[2];
+            String movieName = (String) row[3];
+            MovieStarDTO.MovieInfo movieInfo = new MovieStarDTO.MovieInfo(movieId, movieName);
+            movies.add(movieInfo);
+        }
+        starDetails.setMovies(movies);
 
         return starDetails;
+    }
+
+    private List<MovieStarDTO.MovieInfo> createMoviePairs(String movieId, String movieName) {
+        List<MovieStarDTO.MovieInfo> moviePairs = new ArrayList<>();
+        String[] ids = movieId.split(",");
+        String[] names = movieName.split(",");
+        for (int i = 0; i < ids.length; i++) {
+            moviePairs.add(new MovieStarDTO.MovieInfo(ids[i], names[i]));
+        }
+        return moviePairs;
     }
 }

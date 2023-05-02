@@ -51,5 +51,5 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
             "INNER JOIN stars_in_movies sm ON sm.starid = s.id\n" +
             "INNER JOIN movies m ON m.id = sm.movieid\n" +
             "WHERE s.id = ?1", nativeQuery = true)
-    Object findMovieStarDetailsById(String movieId);
+    List<Object[]> findMovieStarDetailsById(String movieId);
 }
