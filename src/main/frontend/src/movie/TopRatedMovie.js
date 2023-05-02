@@ -18,7 +18,12 @@ const TopRatedMovie = ({ movies }) => {
         {movies.map((movie) => (
           <tr key={movie.id}>
             <td>
-              <Link to={`/movie/${movie.id}`} style={{ textDecoration: 'none' }}>
+              <Link 
+                to={`/movie/${movie.id}`}
+                style={{ 
+                  textDecoration: 'none',
+                  color: 'blue'
+                  }}>
                 {movie.title}
               </Link>
             </td>
@@ -29,7 +34,14 @@ const TopRatedMovie = ({ movies }) => {
               {movie.star_name.split(',').map((star, index) => (
                 <React.Fragment key={index}>
                   {index > 0 && ', '}
-                  <a href={`https://example.com/stars/${star}`} style={{ textDecoration: 'none' }}>{star}</a>
+                  <Link 
+                    to={`https://example.com/stars/${star}`}
+                    style={{ 
+                      textDecoration: 'none',
+                      color: 'blue'
+                      }}>
+                    {star}
+                  </Link>
                 </React.Fragment>
               ))}
             </td>
