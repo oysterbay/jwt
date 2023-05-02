@@ -55,7 +55,22 @@ const StarDetailsPage = () => {
               </Link>
             </td>
             <td>{star.dob}</td>
-            <td>{star.movie_name}</td>
+            <td>
+              {star.movies.map((movie, index) => (
+                <React.Fragment key={index}>
+                  {index > 0 && ', '}
+                  <Link
+                    to={`/movie/${movie.id}`}
+                    style={{
+                      textDecoration: 'none',
+                      color: 'blue'
+                    }}
+                  >
+                    {movie.name}
+                  </Link>
+                </React.Fragment>
+              ))}
+            </td>
           </tr>
       </tbody>
     </table>
