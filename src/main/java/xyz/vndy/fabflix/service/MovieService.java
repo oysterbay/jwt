@@ -60,7 +60,10 @@ public class MovieService {
             movieDTO.setGenre((String) result[4]);
 
             String starIds = (String) result[5];
+            System.out.println("Star Ids: " + starIds);
             String starNames = (String) result[6];
+
+            System.out.println("Star Names: " + starNames);
 
             List<Top20RatedMovieDTO.StarInfo> stars = createStarPairs(starIds, starNames);
             movieDTO.setStars(stars);
