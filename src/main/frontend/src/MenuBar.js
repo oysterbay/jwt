@@ -17,6 +17,7 @@ import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import InputBase from "@mui/material/InputBase";
+import { useNavigate } from 'react-router-dom';
 
 
 const drawerWidth = 240;
@@ -48,6 +49,18 @@ function DrawerAppBar(props) {
     </Box>
   );
 
+  const navigate = useNavigate();
+
+  const handleNavigation = (item) => {
+    if (item === 'Home') {
+      navigate('/');
+    } else if (item === 'Browse') {
+      navigate('/browse');
+    } else if (item === 'Movies') {
+      navigate('/movies');
+    }
+  };
+
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
@@ -71,7 +84,11 @@ function DrawerAppBar(props) {
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
               {navItems.map((item) => (
-                <Button key={item} sx={{ color: "#fff" }}>
+                <Button
+                  key={item}
+                  sx={{ color: "#fff" }}
+                  onClick={() => handleNavigation(item)}
+                >
                   {item}
                 </Button>
               ))}
