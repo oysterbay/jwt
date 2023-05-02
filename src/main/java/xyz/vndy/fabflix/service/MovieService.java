@@ -58,13 +58,29 @@ public class MovieService {
             movieDTO.setYear((Integer) result[2]);
             movieDTO.setDirector((String) result[3]);
             movieDTO.setGenre((String) result[4]);
-            movieDTO.setStar_name((String) result[5]);
-            movieDTO.setRating((Float) result[6]);
+
+            String starIds = (String) result[5];
+            String starNames = (String) result[6];
+
+            List<Top20RatedMovieDTO.StarInfo> stars = createStarPairs(starIds, starNames);
+            movieDTO.setStars(stars);
+
+            movieDTO.setRating((Float) result[7]);
 
             topRatedMovies.add(movieDTO);
         }
 
         return topRatedMovies;
+    }
+
+    private List<Top20RatedMovieDTO.StarInfo> createStarPairs(String starIds, String starNames) {
+        List<Top20RatedMovieDTO.StarInfo> starPairs = new ArrayList<>();
+        String[] ids = starIds.split(",");
+        String[] names = starNames.split(",");
+        for (int i = 0; i < ids.length; i++) {
+            starPairs.add(new Top20RatedMovieDTO.StarInfo(ids[i], names[i]));
+        }
+        return starPairs;
     }
 
     public Top20RatedMovieDTO getSingleMovieDetails(String movieId) {
@@ -77,7 +93,7 @@ public class MovieService {
         movieDetails.setTitle((String) row[1]);
         movieDetails.setYear((Integer) row[2]);
         movieDetails.setDirector((String) row[3]);
-        movieDetails.setStar_name((String) row[4]);
+//        movieDetails.setStar_name((String) row[4]);
         movieDetails.setGenre((String) row[5]);
         movieDetails.setRating((Float) row[6]);
 
