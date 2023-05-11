@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'development') {
   BASE_URL = 'http://localhost:8080/api'
 } else {
   environment = 'production';
-  BASE_URL = 'http://129.146.85.90:8080/api'
+  BASE_URL = `${window.location.protocol}//${window.location.host}/api`;
 }
 
 console.log("env: " + environment)
