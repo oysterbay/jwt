@@ -1,4 +1,4 @@
-package xyz.vndy.fabflix;
+package xyz.vandy.fabflix;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

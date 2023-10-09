@@ -1,14 +1,14 @@
-package xyz.vndy.fabflix.controller;
+package xyz.vandy.fabflix.controller;
 
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import xyz.vndy.fabflix.dto.MovieStarDTO;
-import xyz.vndy.fabflix.dto.Top20RatedMovieDTO;
-import xyz.vndy.fabflix.model.Movie;
-import xyz.vndy.fabflix.service.MovieService;
+import xyz.vandy.fabflix.model.Movie;
+import xyz.vandy.fabflix.service.MovieService;
+import xyz.vandy.fabflix.dto.MovieStarDTO;
+import xyz.vandy.fabflix.dto.Top20RatedMovieDTO;
 
 import java.util.List;
 

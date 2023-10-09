@@ -1,28 +1,22 @@
-package xyz.vndy.fabflix.model;
+package xyz.vandy.fabflix.model;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "genres_in_movies")
-public class GenreMovie {
+@Table(name = "stars_in_movies")
+public class MovieStar {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "genreId", referencedColumnName = "id")
-    private Genre genre;
+    @JoinColumn(name = "starId", referencedColumnName = "id")
+    private Star star;
 
     @ManyToOne
     @JoinColumn(name = "movieId", referencedColumnName = "id")
     private Movie movie;
 
 }
-
-
-
-
-
-
 

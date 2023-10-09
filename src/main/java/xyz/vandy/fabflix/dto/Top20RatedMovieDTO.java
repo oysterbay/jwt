@@ -1,4 +1,4 @@
-package xyz.vndy.fabflix.dto;
+package xyz.vandy.fabflix.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -120,7 +120,6 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<arguments>--no-warnings</arguments>
 							<outputDirectory>target/classes/static</outputDirectory>
 							<resources>
 								<resource>

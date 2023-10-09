@@ -1,4 +1,4 @@
-package xyz.vndy.fabflix.model;
+package xyz.vandy.fabflix.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

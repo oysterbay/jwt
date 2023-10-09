@@ -1,9 +1,9 @@
-package xyz.vndy.fabflix.repository;
+package xyz.vandy.fabflix.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import xyz.vndy.fabflix.model.Movie;
+import xyz.vandy.fabflix.model.Movie;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package xyz.vndy.fabflix;
+package xyz.vandy.fabflix;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

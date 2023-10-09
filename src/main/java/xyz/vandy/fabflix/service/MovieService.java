@@ -1,17 +1,16 @@
-package xyz.vndy.fabflix.service;
+package xyz.vandy.fabflix.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import xyz.vndy.fabflix.dto.MovieStarDTO;
-import xyz.vndy.fabflix.dto.Top20RatedMovieDTO;
-import xyz.vndy.fabflix.model.Movie;
-import xyz.vndy.fabflix.repository.MovieRepository;
+import xyz.vandy.fabflix.model.Movie;
+import xyz.vandy.fabflix.dto.MovieStarDTO;
+import xyz.vandy.fabflix.dto.Top20RatedMovieDTO;
+import xyz.vandy.fabflix.repository.MovieRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class MovieService {

@@ -35,3 +35,5 @@ build/
 **/static/
 src/main/webapp/node/**
 src/main/frontend/node/**
+
+application-local.properties
