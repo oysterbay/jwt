@@ -18,6 +18,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import InputBase from "@mui/material/InputBase";
 import { useNavigate } from 'react-router-dom';
+import Version from "./version";
 
 const drawerWidth = 240;
 const navItems = ["Home", "Browse", "Movies"];
@@ -146,7 +147,7 @@ function DrawerAppBar(props) {
         <Box component="main" sx={{ p: 3 }}>
           <Toolbar />
           <Typography>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+            <Version/>
           </Typography>
         </Box>
       </Box>

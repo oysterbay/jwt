@@ -8,7 +8,7 @@
 		<version>2.7.8</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>xyz.vndy</groupId>
+	<groupId>xyz.vandy</groupId>
 	<artifactId>jwt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>jwt</name>
